@@ -7,23 +7,17 @@ Create an IOS application that displays the list of trending movies, when we sel
 
 As a data provider, use the following REST API endpoints:
 
-```
-Api name Api link Api documentation
-```
-```
-List of trending
-movies
-```
+List of trending movies
 ```
 https://api.themoviedb.org/3/discover/movie https://developers.themoviedb.org/ 3 /discov
 er/movie-discover
 ```
+Details of a movie
 ```
-Details of a movie https://developers.themoviedb.org/3/movies/{movie_id} https://developers.themoviedb.org/ 3 /movie
+https://developers.themoviedb.org/3/movies/{movie_id} https://developers.themoviedb.org/ 3 /movie
 s/get-movie-details
 ```
-Notes :
-● You can use the following api key to authenticate your requests : **c9856d0cb57c3f14bf75bdc6c063b8f**
+
 
 ```
 ● Follow this documentation to get the full poster image path of a movie :
