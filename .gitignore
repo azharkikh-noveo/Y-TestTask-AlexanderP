@@ -25,3 +25,20 @@ DerivedData/
 ## IDE
 .idea/
 
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+
+# Carthage
+Carthage/Checkouts
+Carthage/Build
+
+# Finder metadata
+.DS_Store
