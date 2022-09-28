@@ -39,6 +39,7 @@
 		3B78402928E4C72200214729 /* OperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B78402728E4C72200214729 /* OperationService.swift */; };
 		3B78402C28E4C76F00214729 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3B78402B28E4C76F00214729 /* Alamofire */; };
 		3B78402E28E4D4E200214729 /* MoviesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B78402D28E4D4E200214729 /* MoviesListService.swift */; };
+		3B78403028E4E59800214729 /* MoviesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B78402F28E4E59800214729 /* MoviesResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		3B78402628E4C72200214729 /* APIOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
 		3B78402728E4C72200214729 /* OperationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationService.swift; sourceTree = "<group>"; };
 		3B78402D28E4D4E200214729 /* MoviesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListService.swift; sourceTree = "<group>"; };
+		3B78402F28E4E59800214729 /* MoviesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				3B0DA17F28E427A20098F8A5 /* Movie.swift */,
 				3B0DA18228E42E960098F8A5 /* MovieDetails.swift */,
+				3B78402F28E4E59800214729 /* MoviesResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				3B0DA15428E354440098F8A5 /* MoviesListViewController.swift in Sources */,
 				3B78402E28E4D4E200214729 /* MoviesListService.swift in Sources */,
 				3B78401728E48B6E00214729 /* MoviesListViewModel.swift in Sources */,
+				3B78403028E4E59800214729 /* MoviesResult.swift in Sources */,
 				3B78401D28E4916500214729 /* Assets.swift in Sources */,
 				3B78402128E4B43100214729 /* MovieItemViewModel.swift in Sources */,
 				3B0DA19F28E436170098F8A5 /* BaseCoordinator.swift in Sources */,

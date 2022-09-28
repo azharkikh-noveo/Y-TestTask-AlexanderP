@@ -20,8 +20,8 @@ final class MoviesListViewModel: BaseViewModel {
     }
     
     func foo() {
-        moviesListService.perform(input: ()) { movies in
-            print(movies)
+        moviesListService.perform(input: ()) { moviesResult in
+            print(moviesResult.results)
         } failure: { error in
             print("error!")
             print(error)
@@ -29,4 +29,3 @@ final class MoviesListViewModel: BaseViewModel {
 
     }
 }
-
