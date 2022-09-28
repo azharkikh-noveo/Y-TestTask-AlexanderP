@@ -9,8 +9,14 @@ import UIKit
 import SnapKit
 
 final class MoviesListViewController: BaseViewController {
+    var viewModel: MoviesListViewModel!
+    
     private lazy var tableView: UITableView = {
-        return UITableView()
+        let tableView = UITableView()
+        tableView.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -18,21 +24,38 @@ final class MoviesListViewController: BaseViewController {
         setupView()
     }
     
+    override func loadView() {
+        view = tableView
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        present(error: APIClientError.noResponse)
+        viewModel.foo()
     }
 
     private func setupView() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view)
-            make.bottom.equalTo(self.view)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
-        
         tableView.backgroundColor = .green
+    }
+}
+
+extension MoviesListViewController: UITableViewDelegate {
+    
+}
+
+extension MoviesListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return viewModel.items.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell else {
+            fatalError("Cannot dequeue reusable cell with identifier MovieCell")
+        }
+        movieCell.viewModel = viewModel.items[indexPath.row]
+        return movieCell
     }
 }

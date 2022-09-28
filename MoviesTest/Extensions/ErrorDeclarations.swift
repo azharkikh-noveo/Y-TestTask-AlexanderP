@@ -3,13 +3,11 @@
 //
 
 protocol ErrorWithMessageProtocol: Error {
-    var message: String {get}
+    var message: String { get }
 }
 
 extension ErrorWithMessageProtocol {
-    var message: String {
-        return "Unknown error"
-    }
+    var message: String { "Unknown error" }
 }
 
 struct ErrorWithMessage: ErrorWithMessageProtocol {
@@ -20,18 +18,6 @@ struct ErrorWithMessage: ErrorWithMessageProtocol {
     }
 }
 
-struct UnknownError : ErrorWithMessageProtocol {}
-
-struct NoDataError: ErrorWithMessageProtocol {
-    var message: String {
-        return "Server returned no data"
-    }
-}
-
-struct NullError: ErrorWithMessageProtocol {
-    var message: String { return "..." }
-}
-
 struct ErrorWithTitleAndMessage: ErrorWithMessageProtocol {
     var message: String
     var title: String
@@ -39,19 +25,16 @@ struct ErrorWithTitleAndMessage: ErrorWithMessageProtocol {
         self.message = message
         self.title = title
     }
-}
-
-extension APIClientError {
-    func toErrorWithTitleAndMessage() -> Error {
-        switch self {
-        case .invalidUrl:
-            return ErrorWithTitleAndMessage(title: "Error", message: "Invalid URL")
-        case .noData:
-            return ErrorWithTitleAndMessage(title: "Error", message: "Server returned no data")
-        case .noResponse:
-            return ErrorWithTitleAndMessage(title: "Error", message: "Server did not respond in a timely manner")
-        case .invalidData(_):
-            return ErrorWithTitleAndMessage(title: "Error", message: "Server returned invalid data")
-        }
+    
+    static var nullError: ErrorWithTitleAndMessage {
+        ErrorWithTitleAndMessage(title: "Error", message: "Unknown error")
+    }
+    
+    static var noDataError: ErrorWithTitleAndMessage {
+        ErrorWithTitleAndMessage(title: "Error", message: "Server returned no data")
+    }
+    
+    static var invalidURLError: ErrorWithTitleAndMessage {
+        ErrorWithTitleAndMessage(title: "Error", message: "Invalid URL")
     }
 }

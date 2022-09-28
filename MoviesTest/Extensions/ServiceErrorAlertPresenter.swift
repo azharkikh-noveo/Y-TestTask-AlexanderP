@@ -32,10 +32,6 @@ extension ServiceErrorAlertPresenter where Self: UIViewController {
         }
     }
     
-    func present(error: APIClientError) {
-        present(error: error.toErrorWithTitleAndMessage())
-    }
-    
     func present(error: Error) {
         if let error = error as? ErrorWithTitleAndMessage {
             present(error: error)

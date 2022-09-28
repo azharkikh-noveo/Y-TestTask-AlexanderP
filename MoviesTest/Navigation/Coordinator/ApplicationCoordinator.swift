@@ -19,6 +19,8 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     private func startMoviesList() {
         let moviesListViewController = MoviesListViewController()
+        let viewModel = MoviesListViewModel(moviesListService: MoviesListService())
+        moviesListViewController.viewModel = viewModel
         window?.rootViewController = moviesListViewController
 //        let tabBarController = UITabBarController()
 //        self.window?.rootViewController = tabBarController
