@@ -1,6 +1,5 @@
 //
 // URLSession+Rx.swift
-// Created for Home Control in 2021
 //
 
 import Foundation
