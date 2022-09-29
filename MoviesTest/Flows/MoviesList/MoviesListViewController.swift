@@ -13,6 +13,7 @@ final class MoviesListViewController: BaseViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         tableView.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
         tableView.dataSource = self
         tableView.delegate = self

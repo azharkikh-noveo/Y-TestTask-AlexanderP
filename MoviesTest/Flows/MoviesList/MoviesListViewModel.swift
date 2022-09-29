@@ -21,11 +21,14 @@ final class MoviesListViewModel: BaseViewModel {
     
     func foo() {
         moviesListService.perform(input: ()) { moviesResult in
-            print(moviesResult.results)
+            self.items = moviesResult.results.compactMap {
+                MovieModel(from: $0)
+            }.map {
+                MovieItemViewModel(item: $0)
+            }
         } failure: { error in
             print("error!")
-            print(error)
+//            print(error)
         }
-
     }
 }

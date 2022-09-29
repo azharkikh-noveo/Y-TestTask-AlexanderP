@@ -8,5 +8,8 @@
 import Foundation
 
 final class MovieItemViewModel: BaseViewModel {
-    
+    let item: MovieModel
+    init(item: MovieModel) {
+        self.item = item
+    }
 }

@@ -32,6 +32,9 @@ extension APIEndpoint: URLConvertible {
 }
 
 extension APIEndpoint {
+    static var configuration: APIEndpoint {
+        APIEndpoint(.get, AppConstants.configurationURL)
+    }
     static var moviesList: APIEndpoint {
         APIEndpoint(.get, AppConstants.moviesListURL)
     }
@@ -73,14 +76,6 @@ class APIOperation<Output: Decodable>: Operation {
                 guard let data = data else {
                     failure([ErrorWithTitleAndMessage.noDataError])
                     return
-                }
-                do {
-                    let parsed: Output = try JSONDecoder().decode(Output.self, from: data)
-                    print(parsed)
-                }
-                catch {
-                    print("catch")
-                    print(error)
                 }
                 guard let parsedResult: Output = try? JSONDecoder().decode(Output.self, from: data) else {
                     failure([ErrorWithTitleAndMessage.noDataError])
