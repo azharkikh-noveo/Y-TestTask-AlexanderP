@@ -10,14 +10,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCell" customModule="MoviesTest" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="438" height="157"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jPj-6E-Hce">
+                    <rect key="frame" x="0.0" y="0.0" width="104" height="157"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jPj-6E-Hce" secondAttribute="height" multiplier="104:157" id="m2y-Oc-WLH"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyz-Eo-gYC">
+                    <rect key="frame" x="112" y="18" width="306" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqK-Vx-tan">
+                    <rect key="frame" x="112" y="60.333333333333343" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Uyz-Eo-gYC" firstAttribute="leading" secondItem="jPj-6E-Hce" secondAttribute="trailing" constant="8" symbolic="YES" id="8X5-GG-MMc"/>
+                <constraint firstItem="jPj-6E-Hce" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ik9-q8-TZ5"/>
+                <constraint firstAttribute="bottom" secondItem="jPj-6E-Hce" secondAttribute="bottom" id="N8w-qL-wxM"/>
+                <constraint firstItem="CqK-Vx-tan" firstAttribute="leading" secondItem="jPj-6E-Hce" secondAttribute="trailing" constant="8" symbolic="YES" id="VVL-0G-DHU"/>
+                <constraint firstItem="CqK-Vx-tan" firstAttribute="top" secondItem="Uyz-Eo-gYC" secondAttribute="bottom" constant="22" id="c8F-d6-V2v"/>
+                <constraint firstItem="Uyz-Eo-gYC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="hBh-ic-CNn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uyz-Eo-gYC" secondAttribute="trailing" constant="20" id="m6h-xk-0IY"/>
+                <constraint firstItem="Uyz-Eo-gYC" firstAttribute="leading" secondItem="jPj-6E-Hce" secondAttribute="trailing" constant="8" symbolic="YES" id="mj5-8G-znm"/>
+                <constraint firstItem="jPj-6E-Hce" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uZn-vE-8U7"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="theImageView" destination="jPj-6E-Hce" id="9GI-Uu-cOI"/>
+                <outlet property="theTitleLabel" destination="Uyz-Eo-gYC" id="DDD-gg-Bdl"/>
+                <outlet property="theYearLabel" destination="CqK-Vx-tan" id="zed-Y0-FpF"/>
+            </connections>
             <point key="canvasLocation" x="47.692307692307693" y="-227.84360189573459"/>
         </view>
     </objects>

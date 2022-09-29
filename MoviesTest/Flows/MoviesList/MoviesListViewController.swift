@@ -14,7 +14,6 @@ final class MoviesListViewController: BaseViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
-        tableView.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -22,26 +21,20 @@ final class MoviesListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        viewModel.updateUI = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     override func loadView() {
         view = tableView
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        viewModel.foo()
-    }
-
-    private func setupView() {
-        tableView.backgroundColor = .green
-    }
 }
 
 extension MoviesListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(viewModel.items[indexPath.row].item.id)
+    }
 }
 
 extension MoviesListViewController: UITableViewDataSource {
@@ -58,5 +51,9 @@ extension MoviesListViewController: UITableViewDataSource {
         }
         movieCell.viewModel = viewModel.items[indexPath.row]
         return movieCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        157
     }
 }

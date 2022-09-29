@@ -33,7 +33,7 @@ final class ImagesHelper {
             return nil
         }
     }
-    
+
     func posterUrl(for movie: MovieModel) -> URL? {
         let string = configurationModel.baseUrl + posterSize + movie.posterPath
         return URL(string: string)

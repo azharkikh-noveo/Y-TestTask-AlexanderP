@@ -43,7 +43,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     private func startMoviesList(configuration: ConfigurationModel, imagesHelper: ImagesHelper) {
         let moviesListViewController = MoviesListViewController()
-        let viewModel = MoviesListViewModel(moviesListService: MoviesListService())
+        let viewModel = MoviesListViewModel(moviesListService: MoviesListService(), imagesHelper: imagesHelper)
         moviesListViewController.viewModel = viewModel
         window?.rootViewController = moviesListViewController
         //        let tabBarController = UITabBarController()
@@ -82,5 +82,3 @@ fileprivate final class ErrorViewController: BaseViewController {
         showErrorsIfNeededAndCleanup()
     }
 }
-
-

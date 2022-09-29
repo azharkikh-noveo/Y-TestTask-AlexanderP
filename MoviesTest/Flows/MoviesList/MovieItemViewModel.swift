@@ -9,7 +9,10 @@ import Foundation
 
 final class MovieItemViewModel: BaseViewModel {
     let item: MovieModel
-    init(item: MovieModel) {
+    let imagesHelper: ImagesHelper
+    
+    init(item: MovieModel, imagesHelper: ImagesHelper) {
         self.item = item
+        self.imagesHelper = imagesHelper
     }
 }
