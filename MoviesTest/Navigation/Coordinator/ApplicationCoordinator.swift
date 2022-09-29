@@ -29,7 +29,7 @@ final class ApplicationCoordinator: BaseCoordinator {
                 return
             }
             DispatchQueue.main.async {
-                self.startMoviesList(configuration: configuration, imagesHelper: imagesHelper)
+                self.startMoviesList(imagesHelper: imagesHelper)
             }
         } failure: { [weak self] errors in
             guard let self = self else { return }
@@ -41,11 +41,14 @@ final class ApplicationCoordinator: BaseCoordinator {
         }
     }
     
-    private func startMoviesList(configuration: ConfigurationModel, imagesHelper: ImagesHelper) {
-        let moviesListViewController = MoviesListViewController()
-        let viewModel = MoviesListViewModel(moviesListService: MoviesListService(), imagesHelper: imagesHelper)
-        moviesListViewController.viewModel = viewModel
-        window?.rootViewController = moviesListViewController
+    private func startMoviesList(imagesHelper: ImagesHelper) {
+        let child = MoviesListCoordinator(window: window, imagesHelper: imagesHelper)
+        addDependency(child)
+        child.start()
+//        let moviesListViewController = MoviesListViewController()
+//        let viewModel = MoviesListViewModel(moviesListService: MoviesListService(), imagesHelper: imagesHelper)
+//        moviesListViewController.viewModel = viewModel
+//        window?.rootViewController = moviesListViewController
         //        let tabBarController = UITabBarController()
         //        self.window?.rootViewController = tabBarController
         //        let coordinator = MainFlowCoordinator(tabBar: tabBarController)

@@ -12,12 +12,7 @@ class BaseViewController: UIViewController, ServiceErrorAlertPresenter {
         super.viewDidLoad()
 
         bind()
-        setupStyle()
     }
 
     func bind() {}
-
-    func setupStyle() {
-        navigationController?.navigationBar.isTranslucent = false
-    }
 }

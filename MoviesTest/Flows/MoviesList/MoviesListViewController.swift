@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class MoviesListViewController: BaseViewController {
     var viewModel: MoviesListViewModel!

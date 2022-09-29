@@ -14,9 +14,7 @@
 		3B0DA16728E354460098F8A5 /* MoviesTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA16628E354460098F8A5 /* MoviesTestTests.swift */; };
 		3B0DA18028E427A20098F8A5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA17F28E427A20098F8A5 /* Movie.swift */; };
 		3B0DA18328E42E960098F8A5 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA18228E42E960098F8A5 /* MovieDetails.swift */; };
-		3B0DA19E28E436170098F8A5 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA19A28E436170098F8A5 /* Coordinatable.swift */; };
 		3B0DA19F28E436170098F8A5 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA19B28E436170098F8A5 /* BaseCoordinator.swift */; };
-		3B0DA1A028E436170098F8A5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA19D28E436170098F8A5 /* Router.swift */; };
 		3B0DA1AE28E4363D0098F8A5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA1A328E4363D0098F8A5 /* BaseViewController.swift */; };
 		3B0DA1B528E4363D0098F8A5 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA1AA28E4363D0098F8A5 /* BaseNavigationController.swift */; };
 		3B0DA1B928E436890098F8A5 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DA1B828E436890098F8A5 /* ApplicationCoordinator.swift */; };
@@ -46,6 +44,7 @@
 		3BA374D628E6454700A1F9D4 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA374D528E6454700A1F9D4 /* RxRelay */; };
 		3BA374D828E6454700A1F9D4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA374D728E6454700A1F9D4 /* RxSwift */; };
 		3BA374DA28E6454700A1F9D4 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA374D928E6454700A1F9D4 /* RxTest */; };
+		3BA374DC28E65E9900A1F9D4 /* MoviesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374DB28E65E9900A1F9D4 /* MoviesListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,9 +68,7 @@
 		3B0DA16628E354460098F8A5 /* MoviesTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTestTests.swift; sourceTree = "<group>"; };
 		3B0DA17F28E427A20098F8A5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		3B0DA18228E42E960098F8A5 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
-		3B0DA19A28E436170098F8A5 /* Coordinatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		3B0DA19B28E436170098F8A5 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		3B0DA19D28E436170098F8A5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3B0DA1A328E4363D0098F8A5 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3B0DA1AA28E4363D0098F8A5 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		3B0DA1B828E436890098F8A5 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
@@ -93,6 +90,7 @@
 		3B78403628E5CFA000214729 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		3B78403828E5DC8E00214729 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
 		3B78403A28E5DD8100214729 /* ImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesHelper.swift; sourceTree = "<group>"; };
+		3BA374DB28E65E9900A1F9D4 /* MoviesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				3B0DA19928E436170098F8A5 /* Coordinator */,
-				3B0DA19C28E436170098F8A5 /* Router */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -199,18 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				3B0DA1B828E436890098F8A5 /* ApplicationCoordinator.swift */,
-				3B0DA19A28E436170098F8A5 /* Coordinatable.swift */,
 				3B0DA19B28E436170098F8A5 /* BaseCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		3B0DA19C28E436170098F8A5 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				3B0DA19D28E436170098F8A5 /* Router.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		3B0DA1A128E4363D0098F8A5 /* BaseClasses */ = {
@@ -253,6 +241,7 @@
 				3B78402D28E4D4E200214729 /* MoviesListService.swift */,
 				3B78403628E5CFA000214729 /* MovieModel.swift */,
 				3B78403A28E5DD8100214729 /* ImagesHelper.swift */,
+				3BA374DB28E65E9900A1F9D4 /* MoviesListCoordinator.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -431,7 +420,7 @@
 				3B78403528E5C7B000214729 /* Configuration.swift in Sources */,
 				3B78402128E4B43100214729 /* MovieItemViewModel.swift in Sources */,
 				3B0DA19F28E436170098F8A5 /* BaseCoordinator.swift in Sources */,
-				3B0DA1A028E436170098F8A5 /* Router.swift in Sources */,
+				3BA374DC28E65E9900A1F9D4 /* MoviesListCoordinator.swift in Sources */,
 				3B0DA1BE28E437FE0098F8A5 /* ErrorDeclarations.swift in Sources */,
 				3B78401928E48DCE00214729 /* BaseViewModel.swift in Sources */,
 				3B0DA1B928E436890098F8A5 /* ApplicationCoordinator.swift in Sources */,
@@ -445,7 +434,6 @@
 				3B78402828E4C72200214729 /* APIOperation.swift in Sources */,
 				3B78401528E446C100214729 /* AppConstants.swift in Sources */,
 				3B78402928E4C72200214729 /* OperationService.swift in Sources */,
-				3B0DA19E28E436170098F8A5 /* Coordinatable.swift in Sources */,
 				3B78403728E5CFA000214729 /* MovieModel.swift in Sources */,
 				3B0DA18328E42E960098F8A5 /* MovieDetails.swift in Sources */,
 				3B78401F28E4B3F000214729 /* MovieCell.swift in Sources */,

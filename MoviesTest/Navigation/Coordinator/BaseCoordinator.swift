@@ -4,25 +4,22 @@
 
 import Foundation
 
-class BaseCoordinator: Coordinatable {
+class BaseCoordinator {
+    var childCoordinators: [BaseCoordinator] = []
     
-    weak var presenter: BaseNavigationController?
-    var childCoordinators: [Coordinatable] = []
-    var flowCompletion: CoordinatorHandler?
-    var systemEventFlowCompletion: CoordinatorHandler?
-    
+    /// Do not call super when overriding
     func start() {
-        //TODO: - IMP
+        fatalError("Pure virtual function call")
     }
     
-    func addDependency(_ coordinator: Coordinatable) {
+    func addDependency(_ coordinator: BaseCoordinator) {
         for element in childCoordinators {
             if element === coordinator { return }
         }
         childCoordinators.append(coordinator)
     }
     
-    func removeDependency(_ coordinator: Coordinatable?) {
+    func removeDependency(_ coordinator: BaseCoordinator?) {
         guard
             childCoordinators.isEmpty == false,
             let coordinator = coordinator
