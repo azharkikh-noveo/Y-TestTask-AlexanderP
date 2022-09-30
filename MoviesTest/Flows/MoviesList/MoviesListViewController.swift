@@ -20,6 +20,7 @@ final class MoviesListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Movies Application"
         viewModel.itemsDriver.drive(onNext: { [weak self] nextItems in
             self?.tableView.reloadData()
         }).disposed(by: disposeBag)
@@ -35,7 +36,10 @@ final class MoviesListViewController: BaseViewController {
 
 extension MoviesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(viewModel.items[indexPath.row].item.id)
+        let id = viewModel.items[indexPath.row].item.id
+        print(id)
+        viewModel.selectItem?(id)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

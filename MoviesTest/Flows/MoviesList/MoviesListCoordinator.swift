@@ -30,6 +30,9 @@ final class MoviesListCoordinator: BaseCoordinator {
     }
     
     private func startMovieDetails(id: Int, imagesHelper: ImagesHelper) {
-        
+        guard let navigationController = window?.rootViewController as? UINavigationController else { return }
+        let movieDetailsViewController = MovieDetailsViewController()
+        movieDetailsViewController.viewModel = MovieDetailsViewModel(movieDetailsService: MovieDetailsService(), imagesHelper: imagesHelper, movieId: id)
+        navigationController.pushViewController(movieDetailsViewController, animated: true)
     }
 }

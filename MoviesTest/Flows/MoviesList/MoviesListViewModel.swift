@@ -10,11 +10,12 @@ import RxSwift
 import RxCocoa
 
 final class MoviesListViewModel: BaseViewModel {
-    let itemsSubject = PublishSubject<[MovieItemViewModel]>()
+    let itemsSubject = BehaviorSubject<[MovieItemViewModel]>(value: [])
     var itemsDriver: Driver<[MovieItemViewModel]> {
         itemsSubject.asDriver(onErrorJustReturn: [])
     }
     
+    /// It's currently less work to access data via this field than via the Subject
     private(set) var items = [MovieItemViewModel]()
     var selectItem: ((Int) -> ())?
     
