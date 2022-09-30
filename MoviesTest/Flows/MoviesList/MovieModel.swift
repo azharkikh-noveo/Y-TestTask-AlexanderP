@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct MovieModel {
+protocol MovieWithPoster {
+    var posterPath: String { get }
+}
+
+struct MovieModel: MovieWithPoster {
     let id: Int
     let title: String
     let posterPath: String
@@ -25,3 +29,4 @@ struct MovieModel {
         self.year = String(releaseDate.prefix(4))
     }
 }
+
