@@ -10,19 +10,14 @@ import RxSwift
 import RxCocoa
 
 final class MoviesListViewModel: BaseViewModel {
-    private(set) var items = [MovieItemViewModel]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.updateUI?()
-            }
-        }
+    let itemsSubject = PublishSubject<[MovieItemViewModel]>()
+    var itemsDriver: Driver<[MovieItemViewModel]> {
+        itemsSubject.asDriver(onErrorJustReturn: [])
     }
     
-    var updateUI: (() -> ())? {
-        didSet {
-            updateUI?()
-        }
-    }
+    private(set) var items = [MovieItemViewModel]()
+    var selectItem: ((Int) -> ())?
+    
     let moviesListService: MoviesListService
     let imagesHelper: ImagesHelper
     
@@ -34,14 +29,15 @@ final class MoviesListViewModel: BaseViewModel {
     }
     
     func obtainData() {
-        moviesListService.perform(input: ()) { moviesResult in
-            self.items = moviesResult.results.compactMap {
+        moviesListService.perform(input: (), success: { [weak self] moviesResult in
+            guard let self = self else { return }
+            let items = moviesResult.results.compactMap {
                 MovieModel(from: $0)
             }.map {
                 MovieItemViewModel(item: $0, imagesHelper: self.imagesHelper)
             }
-        } failure: { error in
-            print("error!")
-        }
+            self.items += items
+            self.itemsSubject.onNext(self.items)
+        }, failure: defaultServiceFailure)
     }
 }

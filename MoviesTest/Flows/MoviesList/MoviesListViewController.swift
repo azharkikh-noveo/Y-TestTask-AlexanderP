@@ -20,9 +20,12 @@ final class MoviesListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.updateUI = { [weak self] in
+        viewModel.itemsDriver.drive(onNext: { [weak self] nextItems in
             self?.tableView.reloadData()
-        }
+        }).disposed(by: disposeBag)
+        viewModel.serviceError.drive(onNext: { [weak self] nextError in
+            self?.present(error: nextError)
+        }).disposed(by: disposeBag)
     }
     
     override func loadView() {

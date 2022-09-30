@@ -38,6 +38,9 @@ extension APIEndpoint {
     static var moviesList: APIEndpoint {
         APIEndpoint(.get, AppConstants.moviesListURL)
     }
+    static func movieDetails(movieId: Int) -> APIEndpoint {
+        APIEndpoint(.get, AppConstants.movieDetailsURL.replacingOccurrences(of: "{movie_id}", with: String(movieId)))
+    }
 }
 
 class APIOperation<Output: Decodable>: Operation {

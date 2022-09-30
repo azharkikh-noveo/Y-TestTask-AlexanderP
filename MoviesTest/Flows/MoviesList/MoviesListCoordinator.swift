@@ -21,8 +21,15 @@ final class MoviesListCoordinator: BaseCoordinator {
         let navigationController = BaseNavigationController()
         let moviesListViewController = MoviesListViewController()
         let viewModel = MoviesListViewModel(moviesListService: MoviesListService(), imagesHelper: imagesHelper)
+        viewModel.selectItem = { [unowned self] itemId in
+            self.startMovieDetails(id: itemId, imagesHelper: self.imagesHelper)
+        }
         moviesListViewController.viewModel = viewModel
         navigationController.viewControllers = [moviesListViewController]
         window?.rootViewController = navigationController
+    }
+    
+    private func startMovieDetails(id: Int, imagesHelper: ImagesHelper) {
+        
     }
 }

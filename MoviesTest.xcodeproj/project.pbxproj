@@ -45,6 +45,10 @@
 		3BA374D828E6454700A1F9D4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA374D728E6454700A1F9D4 /* RxSwift */; };
 		3BA374DA28E6454700A1F9D4 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA374D928E6454700A1F9D4 /* RxTest */; };
 		3BA374DC28E65E9900A1F9D4 /* MoviesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374DB28E65E9900A1F9D4 /* MoviesListCoordinator.swift */; };
+		3BA374DE28E6AA2700A1F9D4 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374DD28E6AA2700A1F9D4 /* MovieDetailsViewController.swift */; };
+		3BA374E028E6AA3400A1F9D4 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374DF28E6AA3400A1F9D4 /* MovieDetailsViewModel.swift */; };
+		3BA374E228E6AA3D00A1F9D4 /* MovieDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374E128E6AA3D00A1F9D4 /* MovieDetailsModel.swift */; };
+		3BA374E428E6AA8800A1F9D4 /* MovieDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA374E328E6AA8800A1F9D4 /* MovieDetailsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,10 @@
 		3B78403828E5DC8E00214729 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
 		3B78403A28E5DD8100214729 /* ImagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesHelper.swift; sourceTree = "<group>"; };
 		3BA374DB28E65E9900A1F9D4 /* MoviesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListCoordinator.swift; sourceTree = "<group>"; };
+		3BA374DD28E6AA2700A1F9D4 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		3BA374DF28E6AA3400A1F9D4 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		3BA374E128E6AA3D00A1F9D4 /* MovieDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsModel.swift; sourceTree = "<group>"; };
+		3BA374E328E6AA8800A1F9D4 /* MovieDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +257,10 @@
 		3B78401328E43FC700214729 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
+				3BA374DD28E6AA2700A1F9D4 /* MovieDetailsViewController.swift */,
+				3BA374DF28E6AA3400A1F9D4 /* MovieDetailsViewModel.swift */,
+				3BA374E128E6AA3D00A1F9D4 /* MovieDetailsModel.swift */,
+				3BA374E328E6AA8800A1F9D4 /* MovieDetailsService.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -411,8 +423,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA374E028E6AA3400A1F9D4 /* MovieDetailsViewModel.swift in Sources */,
 				3B0DA15428E354440098F8A5 /* MoviesListViewController.swift in Sources */,
 				3B78402E28E4D4E200214729 /* MoviesListService.swift in Sources */,
+				3BA374E428E6AA8800A1F9D4 /* MovieDetailsService.swift in Sources */,
+				3BA374DE28E6AA2700A1F9D4 /* MovieDetailsViewController.swift in Sources */,
 				3B78401728E48B6E00214729 /* MoviesListViewModel.swift in Sources */,
 				3B78403328E5C7A000214729 /* ConfigurationService.swift in Sources */,
 				3B78403028E4E59800214729 /* MoviesResult.swift in Sources */,
@@ -431,6 +446,7 @@
 				3B78403B28E5DD8100214729 /* ImagesHelper.swift in Sources */,
 				3B0DA18028E427A20098F8A5 /* Movie.swift in Sources */,
 				3B0DA1AE28E4363D0098F8A5 /* BaseViewController.swift in Sources */,
+				3BA374E228E6AA3D00A1F9D4 /* MovieDetailsModel.swift in Sources */,
 				3B78402828E4C72200214729 /* APIOperation.swift in Sources */,
 				3B78401528E446C100214729 /* AppConstants.swift in Sources */,
 				3B78402928E4C72200214729 /* OperationService.swift in Sources */,
