@@ -435,21 +435,18 @@
 		};
 		3B78401A28E4909400214729 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Resources/Localizable.strings",
-				"$(SRCROOT)/Resources/Assets.xcassets/Contents.json",
 			);
 			name = SwiftGen;
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Generated/Localizable.swift",
-				"$(SRCROOT)/Generated/Assets.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

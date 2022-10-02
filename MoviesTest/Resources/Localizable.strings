@@ -6,3 +6,8 @@
   
 */
 "Screen1Title" = "Movies";
+"OK" = "OK";
+"error" = "Error";
+"nullError" = "Unknown error";
+"noDataError" = "Server returned no data";
+"invalidURLError" = "Invalid URL";

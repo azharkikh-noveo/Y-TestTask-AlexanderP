@@ -20,7 +20,9 @@ final class MovieDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
+    }
+    
+    override func bind() {
         viewModel.serviceError.drive(onNext: { [weak self] nextError in
             self?.present(error: nextError)
         }).disposed(by: disposeBag)

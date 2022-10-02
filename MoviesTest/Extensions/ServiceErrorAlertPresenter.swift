@@ -49,7 +49,7 @@ extension ServiceErrorAlertPresenter where Self: UIViewController {
         }
         isPresenting = true
         let alertController = UIAlertController(title: withMessage.message, message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: actionDismiss))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString(L10n.ok, comment: ""), style: .default, handler: actionDismiss))
         present(alertController, animated: true, completion: nil)
     }
 
@@ -62,7 +62,7 @@ extension ServiceErrorAlertPresenter where Self: UIViewController {
         }
         isPresenting = true
         let alertController = UIAlertController(title: withTitleAndMessage.title, message: withTitleAndMessage.message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: actionDismiss))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString(L10n.ok, comment: ""), style: .default, handler: actionDismiss))
         present(alertController, animated: true, completion: nil)
     }
 

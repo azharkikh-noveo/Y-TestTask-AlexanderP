@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         applicationCoordinator.start()
-
+        
+        // limit image cache
+        SDImageCache.shared.config.maxMemoryCost = 1024 * 1024 * 50
+        SDImageCache.shared.config.maxDiskSize = 1024 * 1024 * 50
+        
         return true
     }
 }

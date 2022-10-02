@@ -7,7 +7,7 @@ protocol ErrorWithMessageProtocol: Error {
 }
 
 extension ErrorWithMessageProtocol {
-    var message: String { "Unknown error" }
+    var message: String { L10n.nullError }
 }
 
 struct ErrorWithMessage: ErrorWithMessageProtocol {
@@ -27,14 +27,14 @@ struct ErrorWithTitleAndMessage: ErrorWithMessageProtocol {
     }
     
     static var nullError: ErrorWithTitleAndMessage {
-        ErrorWithTitleAndMessage(title: "Error", message: "Unknown error")
+        ErrorWithTitleAndMessage(title: L10n.error, message: L10n.nullError)
     }
     
     static var noDataError: ErrorWithTitleAndMessage {
-        ErrorWithTitleAndMessage(title: "Error", message: "Server returned no data")
+        ErrorWithTitleAndMessage(title: L10n.error, message: L10n.noDataError)
     }
     
     static var invalidURLError: ErrorWithTitleAndMessage {
-        ErrorWithTitleAndMessage(title: "Error", message: "Invalid URL")
+        ErrorWithTitleAndMessage(title: L10n.error, message: L10n.invalidURLError)
     }
 }

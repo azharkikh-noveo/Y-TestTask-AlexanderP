@@ -21,11 +21,15 @@ final class MoviesListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = L10n.screen1Title
-        viewModel.itemsDriver.drive(onNext: { [weak self] _ in
-            self?.tableView.reloadData()
-        }).disposed(by: disposeBag)
+    }
+
+    override func bind() {
         viewModel.serviceError.drive(onNext: { [weak self] nextError in
             self?.present(error: nextError)
+        }).disposed(by: disposeBag)
+        
+        viewModel.itemsDriver.drive(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
     
@@ -33,6 +37,7 @@ final class MoviesListViewController: BaseViewController {
         view = tableView
     }
 }
+
 // swiftlint:disable force_try
 extension MoviesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
