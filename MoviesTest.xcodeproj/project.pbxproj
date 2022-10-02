@@ -303,7 +303,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B0DA17628E354460098F8A5 /* Build configuration list for PBXNativeTarget "MoviesTest" */;
 			buildPhases = (
-				3B78401A28E4909400214729 /* swiftgen */,
+				3B78401A28E4909400214729 /* SwiftGen */,
+				3B02413628EA1B3F00ADB9AB /* SwiftLint */,
 				3B0DA14828E354440098F8A5 /* Sources */,
 				3B0DA14928E354440098F8A5 /* Frameworks */,
 				3B0DA14A28E354440098F8A5 /* Resources */,
@@ -413,8 +414,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B78401A28E4909400214729 /* swiftgen */ = {
+		3B02413628EA1B3F00ADB9AB /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -422,14 +424,36 @@
 			);
 			inputPaths = (
 			);
-			name = swiftgen;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftgen config run\n";
+			shellScript = "if ! [[ \":$PATH:\" == *\":/opt/homebrew/bin:\"* ]]; then\n  export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\nif hash swiftlint 2>/dev/null; then\nswiftlint\nelse\necho \"warning: swiftlint is not installed. Run install_tools.sh located in the project dir using a terminal.\"\nfi\n";
+		};
+		3B78401A28E4909400214729 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Resources/Localizable.strings",
+				"$(SRCROOT)/Resources/Assets.xcassets/Contents.json",
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Generated/Localizable.swift",
+				"$(SRCROOT)/Generated/Assets.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if ! [[ \":$PATH:\" == *\":/opt/homebrew/bin:\"* ]]; then\n  export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\nif hash swiftgen 2>/dev/null; then\nswiftgen config run\nelse\necho \"warning: swiftgen is not installed. Run install_tools.sh located in the project dir using a terminal.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

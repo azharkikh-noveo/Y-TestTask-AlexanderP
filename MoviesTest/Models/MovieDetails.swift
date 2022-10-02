@@ -113,4 +113,3 @@ struct MovieDetails: Codable {
     let voteAverage: Double?
     let voteCount: Int?
 }
-

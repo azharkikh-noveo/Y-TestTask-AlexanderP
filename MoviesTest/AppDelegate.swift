@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private lazy var applicationCoordinator: ApplicationCoordinator = {
-        return ApplicationCoordinator(window: self.window!)
+        ApplicationCoordinator(window: self.window!)
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

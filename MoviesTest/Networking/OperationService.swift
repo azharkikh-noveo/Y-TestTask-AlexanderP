@@ -7,7 +7,7 @@
 import Foundation
 
 class OperationService<Input, Output: Decodable> {
-    typealias ServiceSuccess = (Output) -> ()
+    typealias ServiceSuccess = (Output) -> Void
     
     final let operationQueue = OperationQueue()
     
@@ -20,6 +20,6 @@ class OperationService<Input, Output: Decodable> {
     }
     
     func createOperation(input: Input, success: @escaping ServiceSuccess, failure: @escaping ServiceFailure) -> Operation? {
-        return nil
+        nil
     }
 }

@@ -40,9 +40,7 @@ final class MovieDetailsViewController: BaseViewController {
                   let url = url
             else { return }
             
-            self.imageView.sd_setImage(with: url
-                                       , placeholderImage: nil
-                                       , options: [.retryFailed, .highPriority])
+            self.imageView.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .highPriority])
         }).disposed(by: disposeBag)
     }
     
@@ -76,7 +74,7 @@ final class MovieDetailsViewController: BaseViewController {
         
         [imageView, titleLabel, yearLabel, overviewLabel].forEach { scrollView.addSubview($0) }
         
-        NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 750/500, constant: 1).isActive = true
+        NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 750 / 500, constant: 1).isActive = true
         imageView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.contentLayoutGuide)
             make.left.equalTo(scrollView.frameLayoutGuide)

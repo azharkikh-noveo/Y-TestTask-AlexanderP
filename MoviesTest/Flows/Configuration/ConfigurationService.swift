@@ -13,7 +13,7 @@ final class ConfigurationService: OperationService<Void, Configuration> {
     }
 }
 
-final fileprivate class ConfigurationOperation: APIOperation<Configuration> {
+final private class ConfigurationOperation: APIOperation<Configuration> {
     init(success: @escaping APIOperationSuccess, failure: @escaping ServiceFailure) {
         super.init(endpoint: .configuration,
                    parameters: [AppConstants.apiKeyRequestKey: AppConstants.apiKey],

@@ -12,7 +12,7 @@ protocol ServiceErrorAlertPresenter: AnyObject {
     func present(error withTitleAndMessage: ErrorWithTitleAndMessage)
 }
 
-fileprivate struct QueueHolder {
+private struct QueueHolder {
     private init() {}
     static let instance = QueueHolder()
     let operationQueue: OperationQueue = {
@@ -25,7 +25,7 @@ fileprivate struct QueueHolder {
 extension ServiceErrorAlertPresenter where Self: UIViewController {
     private var isPresenting: Bool {
         get {
-            return QueueHolder.instance.operationQueue.isSuspended
+            QueueHolder.instance.operationQueue.isSuspended
         }
         set {
             QueueHolder.instance.operationQueue.isSuspended = newValue
@@ -35,8 +35,7 @@ extension ServiceErrorAlertPresenter where Self: UIViewController {
     func present(error: Error) {
         if let error = error as? ErrorWithTitleAndMessage {
             present(error: error)
-        }
-        else if let error = error as? ErrorWithMessageProtocol {
+        } else if let error = error as? ErrorWithMessageProtocol {
             present(error: error)
         }
     }
@@ -71,7 +70,7 @@ extension ServiceErrorAlertPresenter where Self: UIViewController {
         isPresenting = false
     }
 
-    private func enqueue(_ action: @escaping () -> ()) {
+    private func enqueue(_ action: @escaping () -> Void) {
         QueueHolder.instance.operationQueue.addOperation {
             DispatchQueue.main.async {
                 action()

@@ -44,7 +44,7 @@ extension APIEndpoint {
 }
 
 class APIOperation<Output: Decodable>: Operation {
-    typealias APIOperationSuccess = (Output) -> ()
+    typealias APIOperationSuccess = (Output) -> Void
 
     let endpoint: APIEndpoint
     let headers: HTTPHeaders?
@@ -62,11 +62,11 @@ class APIOperation<Output: Decodable>: Operation {
     }
     
     func URL(with endpoint: APIEndpoint) -> URLConvertible {
-        return endpoint
+        endpoint
     }
     
     func createRequest() -> Alamofire.DataRequest {
-        return AF.request(URL(with: endpoint), method: endpoint.method.asAlamofireMethod(), parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        AF.request(URL(with: endpoint), method: endpoint.method.asAlamofireMethod(), parameters: parameters, encoding: URLEncoding.default, headers: headers)
     }
     
     final override func main() {

@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-typealias ServiceFailure = ([ErrorWithMessageProtocol]) -> ()
+typealias ServiceFailure = ([ErrorWithMessageProtocol]) -> Void
 
 class BaseViewModel  {
     final let disposeBag = DisposeBag()
@@ -21,7 +21,7 @@ class BaseViewModel  {
     }
 
     final lazy private(set) var defaultServiceFailure: ServiceFailure = {
-        return { [weak self] errors in
+        { [weak self] errors in
             guard let `self` = self else {
                 return
             }

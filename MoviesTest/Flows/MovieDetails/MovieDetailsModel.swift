@@ -25,4 +25,3 @@ struct MovieDetailsModel: MovieWithPoster {
         self.overview = overview
     }
 }
-

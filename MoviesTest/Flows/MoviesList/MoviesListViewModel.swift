@@ -19,7 +19,7 @@ final class MoviesListViewModel: BaseViewModel {
     
     /// It's currently less work to access data via this field than via the Subject
     private(set) var items = [MovieItemViewModel]()
-    var selectItem: ((Int) -> ())?
+    var selectItem: ((Int) -> Void)?
     
     let moviesListService: MoviesListService
     let imagesHelper: ImagesHelper

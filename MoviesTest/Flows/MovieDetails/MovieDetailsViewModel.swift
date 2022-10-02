@@ -33,6 +33,5 @@ final class MovieDetailsViewModel: BaseViewModel {
             self.movieDetailsSubject.onNext(movieDetailsModel)
             self.posterURLSubject.onNext(self.imagesHelper.posterUrl(for: movieDetailsModel))
         }, failure: defaultServiceFailure)
-    }
-    
+    }    
 }

@@ -29,4 +29,3 @@ struct MovieModel: MovieWithPoster {
         self.year = String(releaseDate.prefix(4))
     }
 }
-

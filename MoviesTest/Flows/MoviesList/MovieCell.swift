@@ -17,9 +17,7 @@ final class MovieCell: UITableViewCell {
     
     var viewModel: MovieItemViewModel! {
         didSet {
-            theImageView.sd_setImage(with: viewModel.imageURL
-                                     , placeholderImage: nil
-                                     , options: [.retryFailed, .highPriority])
+            theImageView.sd_setImage(with: viewModel.imageURL, placeholderImage: nil, options: [.retryFailed, .highPriority])
             theTitleLabel.text = viewModel.item.title
             theYearLabel.text = viewModel.item.year
         }
