@@ -37,7 +37,6 @@ final class MoviesListViewController: BaseViewController {
 extension MoviesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let id = viewModel.items[indexPath.row].item.id
-        print(id)
         viewModel.selectItem?(id)
         tableView.deselectRow(at: indexPath, animated: true)
     }

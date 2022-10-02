@@ -26,7 +26,6 @@ class BaseViewModel  {
                 return
             }
             errors.forEach {
-                print($0.message)
                 self.serviceErrorSubject.onNext($0)
             }
         }
