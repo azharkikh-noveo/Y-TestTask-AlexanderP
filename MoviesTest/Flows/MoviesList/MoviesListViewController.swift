@@ -33,7 +33,7 @@ final class MoviesListViewController: BaseViewController {
         view = tableView
     }
 }
-
+// swiftlint:disable force_try
 extension MoviesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let items = try! viewModel.itemsSubject.value()
@@ -57,6 +57,8 @@ extension MoviesListViewController: UITableViewDataSource {
             fatalError("Cannot dequeue reusable cell with identifier MovieCell")
         }
         let items = try! viewModel.itemsSubject.value()
+        // swiftlint:enable force_try
+
         movieCell.viewModel = items[indexPath.row]
         if indexPath.row == viewModel.resultsPerPage * viewModel.page - 1 {
             viewModel.page += 1

@@ -44,7 +44,9 @@ final class MoviesListViewModel: BaseViewModel {
             }.map {
                 MovieItemViewModel(item: $0, imagesHelper: self.imagesHelper)
             }
+            // swiftlint:disable force_try
             let allItems = (try! self.itemsSubject.value()) + items
+            // swiftlint:enable force_try
             self.itemsSubject.onNext(allItems)
         }, failure: defaultServiceFailure)
     }

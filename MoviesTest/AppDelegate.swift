@@ -12,7 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private lazy var applicationCoordinator: ApplicationCoordinator = {
+        // swiftlint:disable force_unwrapping
         ApplicationCoordinator(window: self.window!)
+        // swiftlint:enable force_unwrapping
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
