@@ -20,7 +20,7 @@ final class MoviesListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Movies"
+        title = L10n.screen1Title
         viewModel.itemsDriver.drive(onNext: { [weak self] nextItems in
             self?.tableView.reloadData()
         }).disposed(by: disposeBag)

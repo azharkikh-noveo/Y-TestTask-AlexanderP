@@ -1,11 +1,11 @@
-# strings:
-#  inputs: MoviesTest/Resources/en.lproj/Localizable.strings
-#  outputs:
-#    templateName: structured-swift5
-#    output: Movies/Generated/Resources/Localizable.swift
+strings:
+  inputs: MoviesTest/Resources/Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: MoviesTest/Generated/Localizable.swift
 
 xcassets:
-  inputs: MoviesTest/Assets.xcassets
+  inputs: MoviesTest/Resources/Assets.xcassets
   outputs:
     templateName: swift5
     output: MoviesTest/Generated/Assets.swift
