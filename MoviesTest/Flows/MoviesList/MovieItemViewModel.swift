@@ -9,10 +9,14 @@ import Foundation
 
 final class MovieItemViewModel: BaseViewModel {
     let item: MovieModel
-    let imagesHelper: ImagesHelper
+    private let imagesHelper: ImagesHelper
     
     init(item: MovieModel, imagesHelper: ImagesHelper) {
         self.item = item
         self.imagesHelper = imagesHelper
+    }
+    
+    var imageURL: URL? {
+        imagesHelper.posterUrl(for: item)
     }
 }

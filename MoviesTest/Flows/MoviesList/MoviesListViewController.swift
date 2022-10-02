@@ -56,6 +56,10 @@ extension MoviesListViewController: UITableViewDataSource {
             fatalError("Cannot dequeue reusable cell with identifier MovieCell")
         }
         movieCell.viewModel = viewModel.items[indexPath.row]
+        if indexPath.row == viewModel.resultsPerPage * viewModel.page - 1 {
+            viewModel.page += 1
+            viewModel.obtainData()
+        }
         return movieCell
     }
     

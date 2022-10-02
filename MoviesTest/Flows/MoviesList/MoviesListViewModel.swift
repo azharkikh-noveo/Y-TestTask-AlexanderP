@@ -14,6 +14,8 @@ final class MoviesListViewModel: BaseViewModel {
     var itemsDriver: Driver<[MovieItemViewModel]> {
         itemsSubject.asDriver(onErrorJustReturn: [])
     }
+    var page = 1
+    let resultsPerPage = 20
     
     /// It's currently less work to access data via this field than via the Subject
     private(set) var items = [MovieItemViewModel]()
@@ -29,8 +31,15 @@ final class MoviesListViewModel: BaseViewModel {
         obtainData()
     }
     
+    var totalPages: Int?
+    
     func obtainData() {
-        moviesListService.perform(input: (), success: { [weak self] moviesResult in
+        if let totalPages = totalPages {
+            if page > totalPages {
+                return
+            }
+        }
+        moviesListService.perform(input: page, success: { [weak self] moviesResult in
             guard let self = self else { return }
             let items = moviesResult.results.compactMap {
                 MovieModel(from: $0)

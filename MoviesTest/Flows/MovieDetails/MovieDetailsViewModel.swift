@@ -10,11 +10,15 @@ import RxSwift
 import RxCocoa
 
 final class MovieDetailsViewModel: BaseViewModel {
-    let imagesHelper: ImagesHelper
+    private let imagesHelper: ImagesHelper
     let movieDetailsService: MovieDetailsService
     private let movieDetailsSubject = BehaviorSubject<MovieDetailsModel?>(value: nil)
     var movieDetails: Driver<MovieDetailsModel?> {
         movieDetailsSubject.asDriver(onErrorJustReturn: nil)
+    }
+    private let posterURLSubject = PublishSubject<URL?>()
+    var posterURL: Driver<URL?> {
+        posterURLSubject.asDriver(onErrorJustReturn: nil)
     }
     
     init(movieDetailsService: MovieDetailsService, imagesHelper: ImagesHelper, movieId: Int) {
@@ -22,8 +26,13 @@ final class MovieDetailsViewModel: BaseViewModel {
         self.movieDetailsService = movieDetailsService
         super.init()
         movieDetailsService.perform(input: movieId, success: { [weak self] details in
-            self?.movieDetailsSubject.onNext(MovieDetailsModel(from: details))
+            guard let self = self,
+                  let movieDetailsModel = MovieDetailsModel(from: details)
+            else { return }
+            
+            self.movieDetailsSubject.onNext(movieDetailsModel)
+            self.posterURLSubject.onNext(self.imagesHelper.posterUrl(for: movieDetailsModel))
         }, failure: defaultServiceFailure)
-
     }
+    
 }

@@ -17,12 +17,14 @@ final class MovieCell: UITableViewCell {
     
     var viewModel: MovieItemViewModel! {
         didSet {
-            theImageView.sd_setImage(with: viewModel.imagesHelper.posterUrl(for: viewModel.item))
+            theImageView.sd_setImage(with: viewModel.imageURL
+                                     , placeholderImage: nil
+                                     , options: [.retryFailed, .highPriority])
             theTitleLabel.text = viewModel.item.title
             theYearLabel.text = viewModel.item.year
         }
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         theImageView.image = nil

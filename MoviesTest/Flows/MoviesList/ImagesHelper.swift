@@ -38,5 +38,4 @@ final class ImagesHelper {
         let string = configurationModel.baseUrl + posterSize + movie.posterPath
         return URL(string: string)
     }
-
 }
