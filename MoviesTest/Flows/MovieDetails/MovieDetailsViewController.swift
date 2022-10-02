@@ -9,24 +9,14 @@ import UIKit
 import SnapKit
 
 final class MovieDetailsViewController: BaseViewController {
-    var viewModel: MovieDetailsViewModel! {
-        didSet {
-            viewModel.updateUI = { [weak self] in
-                print(self as Any)
-            }
-        }
-    }
+    var viewModel: MovieDetailsViewModel!
     
     private lazy var scrollView = UIScrollView()
     private lazy var imageView = UIImageView()
     private lazy var titleLabel = UILabel()
     private lazy var yearLabel = UILabel()
     private lazy var overviewLabel = UILabel()
-//
-//    override func loadView() {
-//        view = scrollView
-//    }
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -40,24 +30,69 @@ final class MovieDetailsViewController: BaseViewController {
                   let item = item
             else { return }
             
-            self.imageView.sd_setImage(with: self.viewModel.imagesHelper.posterUrl(for: item))
+            self.imageView.sd_setImage(with: self.viewModel.imagesHelper.posterUrl(for: item)
+                                       , placeholderImage: nil
+                                       , options: [.retryFailed, .highPriority])
             self.titleLabel.text = item.title
             self.yearLabel.text = item.year
             self.overviewLabel.text = item.overview
         }).disposed(by: disposeBag)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollableContentHeight)
+    }
+    
+    private var scrollableContentHeight: CGFloat {
+        0 + imageView.frame.height + 40
+        + titleLabel.intrinsicContentSize.height + 20
+        + yearLabel.frame.height + 40
+        + overviewLabel.intrinsicContentSize.height + 20
+    }
+    
     private func setupView() {
         view.backgroundColor = .white
-        [imageView, titleLabel, yearLabel, overviewLabel].forEach {
-            view.addSubview($0)
+    
+        titleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        titleLabel.numberOfLines = 0
+        overviewLabel.numberOfLines = 0
+        scrollView.bounces = false
+        
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.left.equalTo(view.safeAreaLayoutGuide)
+            make.right.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
+        [imageView, titleLabel, yearLabel, overviewLabel].forEach { scrollView.addSubview($0) }
+
+        NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 750/500, constant: 1).isActive = true
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(view)
-            make.left.equalTo(view)
-            make.right.equalTo(view)
-//            make.width.equalTo(imageView.snp.height).multipliedBy(500/750)
+            make.top.equalTo(scrollView.contentLayoutGuide)
+            make.left.equalTo(scrollView.frameLayoutGuide)
+            make.right.equalTo(scrollView.frameLayoutGuide)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(40)
+            make.left.equalTo(scrollView.frameLayoutGuide).offset(20)
+            make.right.equalTo(scrollView.frameLayoutGuide).inset(20)
+        }
+        
+        yearLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.left.equalTo(scrollView.frameLayoutGuide).offset(20)
+            make.right.equalTo(scrollView.frameLayoutGuide).inset(20)
+        }
+        
+        overviewLabel.snp.makeConstraints { make in
+            make.top.equalTo(yearLabel.snp.bottom).offset(40)
+            make.left.equalTo(scrollView.frameLayoutGuide).offset(20)
+            make.right.equalTo(scrollView.frameLayoutGuide).inset(20)
+            make.bottom.equalTo(scrollView.contentLayoutGuide).inset(20)
         }
     }
 }

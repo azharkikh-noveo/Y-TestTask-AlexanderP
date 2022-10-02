@@ -10,15 +10,9 @@ import RxSwift
 import RxCocoa
 
 final class MovieDetailsViewModel: BaseViewModel {
-    var updateUI: (() -> ())? {
-        didSet {
-            updateUI?()
-        }
-    }
-    
     let imagesHelper: ImagesHelper
     let movieDetailsService: MovieDetailsService
-    private let movieDetailsSubject = PublishSubject<MovieDetailsModel?>()
+    private let movieDetailsSubject = BehaviorSubject<MovieDetailsModel?>(value: nil)
     var movieDetails: Driver<MovieDetailsModel?> {
         movieDetailsSubject.asDriver(onErrorJustReturn: nil)
     }
