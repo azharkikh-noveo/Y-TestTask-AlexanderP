@@ -17,12 +17,10 @@ final class MoviesListViewModel: BaseViewModel {
     var page = 1
     let resultsPerPage = 20
     
-    /// It's currently less work to access data via this field than via the Subject
-    private(set) var items = [MovieItemViewModel]()
     var selectItem: ((Int) -> Void)?
     
-    let moviesListService: MoviesListService
-    let imagesHelper: ImagesHelper
+    private let moviesListService: MoviesListService
+    private let imagesHelper: ImagesHelper
     
     init(moviesListService: MoviesListService, imagesHelper: ImagesHelper) {
         self.moviesListService = moviesListService
@@ -31,7 +29,7 @@ final class MoviesListViewModel: BaseViewModel {
         obtainData()
     }
     
-    var totalPages: Int?
+    private var totalPages: Int?
     
     func obtainData() {
         if let totalPages = totalPages {
@@ -46,8 +44,8 @@ final class MoviesListViewModel: BaseViewModel {
             }.map {
                 MovieItemViewModel(item: $0, imagesHelper: self.imagesHelper)
             }
-            self.items += items
-            self.itemsSubject.onNext(self.items)
+            let allItems = (try! self.itemsSubject.value()) + items
+            self.itemsSubject.onNext(allItems)
         }, failure: defaultServiceFailure)
     }
 }

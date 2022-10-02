@@ -36,7 +36,8 @@ final class MoviesListViewController: BaseViewController {
 
 extension MoviesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = viewModel.items[indexPath.row].item.id
+        let items = try! viewModel.itemsSubject.value()
+        let id = items[indexPath.row].item.id
         viewModel.selectItem?(id)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -44,8 +45,9 @@ extension MoviesListViewController: UITableViewDelegate {
 
 extension MoviesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let items = try! viewModel.itemsSubject.value()
         if section == 0 {
-            return viewModel.items.count
+            return items.count
         }
         return 0
     }
@@ -54,7 +56,8 @@ extension MoviesListViewController: UITableViewDataSource {
         guard let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell else {
             fatalError("Cannot dequeue reusable cell with identifier MovieCell")
         }
-        movieCell.viewModel = viewModel.items[indexPath.row]
+        let items = try! viewModel.itemsSubject.value()
+        movieCell.viewModel = items[indexPath.row]
         if indexPath.row == viewModel.resultsPerPage * viewModel.page - 1 {
             viewModel.page += 1
             viewModel.obtainData()

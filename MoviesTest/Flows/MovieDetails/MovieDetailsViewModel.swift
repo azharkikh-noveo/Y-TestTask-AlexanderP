@@ -16,7 +16,7 @@ final class MovieDetailsViewModel: BaseViewModel {
     var movieDetails: Driver<MovieDetailsModel?> {
         movieDetailsSubject.asDriver(onErrorJustReturn: nil)
     }
-    private let posterURLSubject = PublishSubject<URL?>()
+    private let posterURLSubject = BehaviorSubject<URL?>(value: nil)
     var posterURL: Driver<URL?> {
         posterURLSubject.asDriver(onErrorJustReturn: nil)
     }
