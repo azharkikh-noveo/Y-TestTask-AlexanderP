@@ -66,8 +66,7 @@ extension MoviesListViewController: UITableViewDataSource {
 
         movieCell.viewModel = items[indexPath.row]
         if indexPath.row == viewModel.resultsPerPage * viewModel.page - 1 {
-            viewModel.page += 1
-            viewModel.obtainData()
+            viewModel.onNextPage()
         }
         return movieCell
     }
