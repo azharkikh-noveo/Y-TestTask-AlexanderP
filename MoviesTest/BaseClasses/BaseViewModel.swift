@@ -1,9 +1,7 @@
 //
 //  BaseViewModel.swift
-//  ILSS
 //
 //  Created by  Alexander Polyakov on 12.01.18.
-//  Copyright © 2018 madbrains. All rights reserved.
 //
 
 import Foundation

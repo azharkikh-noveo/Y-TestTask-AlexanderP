@@ -28,7 +28,7 @@ final class MoviesListViewController: BaseViewController {
             self?.present(error: nextError)
         }).disposed(by: disposeBag)
         
-        viewModel.itemsDriver.drive(onNext: { [weak self] _ in
+        viewModel.items.drive(onNext: { [weak self] _ in
             self?.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -38,37 +38,29 @@ final class MoviesListViewController: BaseViewController {
     }
 }
 
-// swiftlint:disable force_try
-extension MoviesListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let items = try! viewModel.itemsSubject.value()
-        let id = items[indexPath.row].item.id
-        viewModel.selectItem?(id)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
 extension MoviesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let items = try! viewModel.itemsSubject.value()
-        if section == 0 {
-            return items.count
-        }
-        return 0
+        section == 0 ? viewModel.itemsSubjectCurrentValue.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let movieCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell else {
             fatalError("Cannot dequeue reusable cell with identifier MovieCell")
         }
-        let items = try! viewModel.itemsSubject.value()
-        // swiftlint:enable force_try
 
-        movieCell.viewModel = items[indexPath.row]
+        movieCell.viewModel = viewModel.itemsSubjectCurrentValue[indexPath.row]
         if indexPath.row == viewModel.resultsPerPage * viewModel.page - 1 {
             viewModel.onNextPage()
         }
         return movieCell
+    }
+}
+
+extension MoviesListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = viewModel.itemsSubjectCurrentValue[indexPath.row].item.id
+        viewModel.selectItem?(id)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

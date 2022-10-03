@@ -12,8 +12,14 @@ import RxCocoa
 final class MoviesListViewModel: BaseViewModel {
     let resultsPerPage = 20
     
+    /// 'value()' of that subject never throws
     let itemsSubject = BehaviorSubject<[MovieItemViewModel]>(value: [])
-    var itemsDriver: Driver<[MovieItemViewModel]> {
+    var itemsSubjectCurrentValue: [MovieItemViewModel] {
+        // swiftlint:disable force_try
+        try! itemsSubject.value()
+        // swiftlint:enable force_try
+    }
+    var items: Driver<[MovieItemViewModel]> {
         itemsSubject.asDriver(onErrorJustReturn: [])
     }
     
@@ -53,9 +59,7 @@ final class MoviesListViewModel: BaseViewModel {
                 MovieItemViewModel(item: $0, imagesHelper: self.imagesHelper)
             }
             
-            // swiftlint:disable force_try
-            let allItems = (try! self.itemsSubject.value()) + items
-            // swiftlint:enable force_try
+            let allItems = self.itemsSubjectCurrentValue + items
             self.itemsSubject.onNext(allItems)
         }, failure: defaultServiceFailure)
     }
