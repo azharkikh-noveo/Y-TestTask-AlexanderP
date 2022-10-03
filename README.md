@@ -47,7 +47,7 @@ Here is the list of possible futher improvements:
 2. Whilst creating models, also extract protosols herever needed for mocks.
 3. Improve the look of UI.
 4. Add images loading cancellation, so image loading is cancelled for images that are not loaded yet and that already has gone from the screens.
-5. Improму preloading of the list items.
+5. Improve preloading of movies in the list of movies for smoother scroll.
 
 ## Task :
 
